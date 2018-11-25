@@ -39,5 +39,15 @@ namespace Miner
         {
             NameOfUser = textBox1.Text;
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            string str= null;
+            foreach (var item in Class1.results)
+            {
+                str += item+'\n';
+            }
+            MessageBox.Show(str);
+        }
     }
 }

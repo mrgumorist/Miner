@@ -21,6 +21,7 @@ namespace Miner
     {
         // 0-nema minu 10-mine 
         string NameOfUser;
+        int total = 0;
         int[,] Mass = new int[5,5];
         Button[,] MassButton = new Button[5, 5];
         Random random = new Random();
@@ -173,8 +174,14 @@ namespace Miner
             }
             return count;
         }
+        private void Help()
+        {
+            Center.Text ="Total: "+ total;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            total += 50;
+            Help();
             if (countEnabled() > 5)
             {
                 for (int i = 0; i < 5; i++)
@@ -215,6 +222,7 @@ namespace Miner
                                     }
                                 }
                                 MessageBox.Show("You lose");
+                                Class1.AddToTop(NameOfUser, total);
                                 this.Close();
                                 break;
                                 
@@ -226,6 +234,7 @@ namespace Miner
             else
             {
                 System.Windows.Forms.MessageBox.Show("You win");
+                Class1.AddToTop(NameOfUser, total);
                 this.Close();
             }
         }

@@ -13,5 +13,6 @@
         <Button x:Name="button_Copy1" Content="20*20" HorizontalAlignment="Left" Height="117" Margin="286,121,0,0" VerticalAlignment="Top" Width="86"/>
         <Label x:Name="label1" Content="Введіть ваше ім'я:" HorizontalAlignment="Left" Margin="74,34,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="208,37,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120" TextChanged="textBox1_TextChanged"/>
+        <Button x:Name="button1" Content="PRINT RESULTS OF ALL PLAYERS" HorizontalAlignment="Left" Height="44" Margin="18,251,0,0" VerticalAlignment="Top" Width="354" Click="button1_Click"/>
     </Grid>
 </Window>
