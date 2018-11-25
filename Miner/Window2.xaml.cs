@@ -1,0 +1,262 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace Miner
+{
+    /// <summary>
+    /// Interaction logic for Window2.xaml
+    /// </summary>
+    public partial class Window2 : Window
+    {
+        string NameOfUser;
+        int total = 0;
+        int[,] Mass = new int[10, 10];
+        Button[,] MassButton = new Button[10, 10];
+        Random random = new Random();
+        public Window2(string NameOfUser)
+        {
+            this.NameOfUser = NameOfUser;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    Mass[i, j] = 0;
+                }
+            }
+            int countofmin = 10;
+            while (countofmin != 0)
+            {
+                bool ChiYE = false;
+                while (ChiYE == false)
+                {
+                    int x = Class1.RandomTo10();
+                    int y = Class1.RandomTo10();
+                    if (Mass[x, y] != 10)
+                    {
+                        Mass[x, y] = 10;
+                        ChiYE = true;
+                    }
+                }
+                countofmin--;
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    if (Mass[i, j] != 10)
+                    {
+                        try
+                        {
+                            if (Mass[i - 1, j] == 10)
+                            {
+                                Mass[i, j]++;
+                            }
+                        }
+                        catch
+                        {
+
+
+                        }
+                        try
+                        {
+                            if (Mass[i - 1, j - 1] == 10)
+                            {
+                                Mass[i, j]++;
+                            }
+                        }
+                        catch
+                        {
+
+
+                        }
+                        try
+                        {
+                            if (Mass[i, j - 1] == 10)
+                            {
+                                Mass[i, j]++;
+                            }
+                        }
+                        catch
+                        {
+
+
+                        }
+                        try
+                        {
+                            if (Mass[i, j + 1] == 10)
+                            {
+                                Mass[i, j]++;
+                            }
+                        }
+                        catch
+                        {
+
+
+                        }
+                        try
+                        {
+                            if (Mass[i - 1, j + 1] == 10)
+                            {
+                                Mass[i, j]++;
+                            }
+                        }
+                        catch
+                        {
+
+
+                        }
+                        try
+                        {
+                            if (Mass[i + 1, j - 1] == 10)
+                            {
+                                Mass[i, j]++;
+                            }
+                        }
+                        catch
+                        {
+
+
+                        }
+                        try
+                        {
+                            if (Mass[i + 1, j] == 10)
+                            {
+                                Mass[i, j]++;
+                            }
+                        }
+                        catch
+                        {
+
+
+                        }
+                        try
+                        {
+                            if (Mass[i + 1, j + 1] == 10)
+                            {
+                                Mass[i, j]++;
+                            }
+                        }
+                        catch
+                        {
+
+
+                        }
+                    }
+                }
+            }
+                InitializeComponent();
+        }
+        public int countEnabled()
+        {
+            int count = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    if (MassButton[i, j].IsEnabled == true)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+        private void Help()
+        {
+            Center.Text = "Total: " + total;
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            total += 100;
+            Help();
+            if (countEnabled() > 10)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        if ((sender as Button) == MassButton[i, j])
+                        {
+                            if (Mass[i, j] != 10 && Mass[i, j] != 0)
+                            {
+                                MassButton[i, j].Content = Mass[i, j];
+                                MassButton[i, j].IsEnabled = false;
+                            }
+                            else if (Mass[i, j] == 0)
+                            {
+                                MassButton[i, j].IsEnabled = false;
+                            }
+                            else
+                            {
+                                for (int k = 0; k < 10; k++)
+                                {
+                                    for (int l = 0; l < 10; l++)
+                                    {
+                                        if (Mass[k, l] == 10)
+                                        {
+                                            MassButton[k, l].Content = "*";
+                                            MassButton[k, l].IsEnabled = false;
+                                        }
+                                        else if (Mass[k, l] == 0)
+                                        {
+                                            MassButton[k, l].IsEnabled = false;
+                                        }
+                                        else
+                                        {
+                                            MassButton[k, l].Content = Mass[k, l];
+                                            MassButton[k, l].IsEnabled = false;
+                                        }
+                                    }
+                                }
+                                MessageBox.Show("You lose");
+                                Class1.AddToTop(NameOfUser, total);
+                                this.Close();
+                                break;
+
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("You win");
+                Class1.AddToTop(NameOfUser, total);
+                this.Close();
+            }
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            int x = 0, y = 0;
+            foreach (var item in kek.Children)
+            {
+                if (item is Button)
+                {
+
+                    if (x < 10)
+                    {
+                        MassButton[x, y] = item as Button;
+                        x++;
+                    }
+                    else
+                    {
+                        x = 0; y++;
+                        MassButton[x, y] = item as Button;
+                        x++;
+                    }
+                }
+            }
+        }
+    }
+}

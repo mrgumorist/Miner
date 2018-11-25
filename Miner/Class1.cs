@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Miner
 {
+    [Serializable]
     static class Class1
     {
        private static Random random = new Random();

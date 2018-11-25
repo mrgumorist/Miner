@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace Miner
 {
@@ -48,6 +50,54 @@ namespace Miner
                 str += item+'\n';
             }
             MessageBox.Show(str);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                XmlSerializer formatter = new XmlSerializer(typeof(List<string>));
+                using (FileStream fs = new FileStream("persons.xml", FileMode.OpenOrCreate))
+                {
+                    formatter.Serialize(fs, Class1.results);
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            XmlSerializer formatter = new XmlSerializer(typeof(List<string>));
+
+            try
+            {
+                using (FileStream fs = new FileStream("persons.xml", FileMode.OpenOrCreate))
+                {
+                    Class1.results = (List<string>)formatter.Deserialize(fs);
+
+                }
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void button_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Visibility = Visibility.Hidden;
+            Window2 objMainWindow = new Window2(NameOfUser);
+            objMainWindow.ShowDialog();
+            Visibility = Visibility.Visible;
+        }
+
+        private void button_Copy1_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
