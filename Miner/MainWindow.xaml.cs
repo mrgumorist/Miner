@@ -15,14 +15,29 @@ using System.Windows.Shapes;
 
 namespace Miner
 {
+   
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string NameOfUser;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Visibility = Visibility.Hidden;
+            Window1 objMainWindow = new Window1(NameOfUser);
+            objMainWindow.ShowDialog();
+            Visibility = Visibility.Visible;
+        }
+
+        private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            NameOfUser = textBox1.Text;
         }
     }
 }
