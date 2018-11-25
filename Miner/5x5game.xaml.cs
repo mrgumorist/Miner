@@ -210,12 +210,14 @@ namespace Miner
                                         else
                                         {
                                             MassButton[k, l].Content = Mass[k, l];
+                                            MassButton[k, l].IsEnabled = false;
                                         }
                                     }
                                 }
-                                break;
                                 MessageBox.Show("You lose");
                                 this.Close();
+                                break;
+                                
                             }
                         }
                     }
