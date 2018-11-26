@@ -15,35 +15,34 @@ using System.Windows.Shapes;
 namespace Miner
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for Thirt.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Thirt : Window
     {
-        // 0-nema minu 10-mine 
         string NameOfUser;
         int total = 0;
-        int[,] Mass = new int[5,5];
+        int[,] Mass = new int[5, 5];
         Button[,] MassButton = new Button[5, 5];
         Random random = new Random();
-        public Window1(string NameOfUser)
+        public Thirt(string NameOfUser)
         {
             this.NameOfUser = NameOfUser;
             for (int i = 0; i < 5; i++)
             {
-                for(int j=0; j<5; j++)
+                for (int j = 0; j < 5; j++)
                 {
-                    Mass[i,j] = 0;
+                    Mass[i, j] = 0;
                 }
             }
-            int countofmin = 5;
-            while(countofmin != 0)
+            int countofmin = 15;
+            while (countofmin != 0)
             {
-                bool ChiYE=false;
+                bool ChiYE = false;
                 while (ChiYE == false)
                 {
                     int x = Class1.RandomTo5();
                     int y = Class1.RandomTo5();
-                    if(Mass[x,y]!=10)
+                    if (Mass[x, y] != 10)
                     {
                         Mass[x, y] = 10;
                         ChiYE = true;
@@ -55,23 +54,23 @@ namespace Miner
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    if(Mass[i,j]!=10)
+                    if (Mass[i, j] != 10)
                     {
                         try
                         {
-                            if(Mass[i-1,j]==10)
+                            if (Mass[i - 1, j] == 10)
                             {
                                 Mass[i, j]++;
                             }
                         }
-                        catch 
+                        catch
                         {
 
-                           
+
                         }
                         try
                         {
-                            if (Mass[i - 1, j-1] == 10)
+                            if (Mass[i - 1, j - 1] == 10)
                             {
                                 Mass[i, j]++;
                             }
@@ -107,7 +106,7 @@ namespace Miner
                         }
                         try
                         {
-                            if (Mass[i-1, j + 1] == 10)
+                            if (Mass[i - 1, j + 1] == 10)
                             {
                                 Mass[i, j]++;
                             }
@@ -131,7 +130,7 @@ namespace Miner
                         }
                         try
                         {
-                            if (Mass[i+1, j] == 10)
+                            if (Mass[i + 1, j] == 10)
                             {
                                 Mass[i, j]++;
                             }
@@ -155,7 +154,7 @@ namespace Miner
                         }
                     }
                 }
-                
+
             }
             InitializeComponent();
         }
@@ -168,7 +167,7 @@ namespace Miner
                 {
                     if (MassButton[i, j].IsEnabled == true)
                     {
-                        count ++;
+                        count++;
                     }
                 }
             }
@@ -176,13 +175,13 @@ namespace Miner
         }
         private void Help()
         {
-            Center.Text ="Total: "+ total;
+            Center.Text = "Total: " + total;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            total += 50;
+            total += 150;
             Help();
-            if (countEnabled() > 5)
+            if (countEnabled() > 15)
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -201,16 +200,16 @@ namespace Miner
                             }
                             else
                             {
-                                for(int k=0; k<5; k++)
+                                for (int k = 0; k < 5; k++)
                                 {
                                     for (int l = 0; l < 5; l++)
                                     {
-                                        if(Mass[k,l]==10)
+                                        if (Mass[k, l] == 10)
                                         {
-                                            MassButton[k, l].Content ="*" ;
+                                            MassButton[k, l].Content = "*";
                                             MassButton[k, l].IsEnabled = false;
                                         }
-                                        else if(Mass[k, l] == 0)
+                                        else if (Mass[k, l] == 0)
                                         {
                                             MassButton[k, l].IsEnabled = false;
                                         }
@@ -225,7 +224,7 @@ namespace Miner
                                 Class1.AddToTop(NameOfUser, total);
                                 this.Close();
                                 break;
-                                
+
                             }
                         }
                     }
@@ -260,10 +259,10 @@ namespace Miner
                     }
                 }
             }
-            
+
 
         }
-       
+
 
     }
 }

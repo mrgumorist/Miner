@@ -51,8 +51,13 @@ namespace Miner
             }
             MessageBox.Show(str);
         }
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+            Class1.results.Clear();
+        }
+
+            private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             try
             {
@@ -90,14 +95,20 @@ namespace Miner
         private void button_Copy_Click(object sender, RoutedEventArgs e)
         {
             Visibility = Visibility.Hidden;
-            Window2 objMainWindow = new Window2(NameOfUser);
-            objMainWindow.ShowDialog();
-            Visibility = Visibility.Visible;
+             Window2 objMainWindow = new Window2(NameOfUser);
+             objMainWindow.ShowDialog();
+             Visibility = Visibility.Visible;
+           // MessageBox.Show("Вибачте! Цей варіант гри стане доступний в майбутньому!");
+
+
         }
 
         private void button_Copy1_Click(object sender, RoutedEventArgs e)
         {
-
+            Visibility = Visibility.Hidden;
+            Thirt objMainWindow = new Thirt(NameOfUser);
+            objMainWindow.ShowDialog();
+            Visibility = Visibility.Visible;
         }
     }
 }

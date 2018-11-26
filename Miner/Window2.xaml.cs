@@ -21,15 +21,15 @@ namespace Miner
     {
         string NameOfUser;
         int total = 0;
-        int[,] Mass = new int[10, 10];
-        Button[,] MassButton = new Button[10, 10];
+        int[,] Mass = new int[5, 5];
+        Button[,] MassButton = new Button[5, 5];
         Random random = new Random();
         public Window2(string NameOfUser)
         {
             this.NameOfUser = NameOfUser;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < 5; j++)
                 {
                     Mass[i, j] = 0;
                 }
@@ -40,8 +40,8 @@ namespace Miner
                 bool ChiYE = false;
                 while (ChiYE == false)
                 {
-                    int x = Class1.RandomTo10();
-                    int y = Class1.RandomTo10();
+                    int x = Class1.RandomTo5();
+                    int y = Class1.RandomTo5();
                     if (Mass[x, y] != 10)
                     {
                         Mass[x, y] = 10;
@@ -50,9 +50,9 @@ namespace Miner
                 }
                 countofmin--;
             }
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < 5; j++)
                 {
                     if (Mass[i, j] != 10)
                     {
@@ -154,15 +154,16 @@ namespace Miner
                         }
                     }
                 }
+
             }
-                InitializeComponent();
+            InitializeComponent();
         }
         public int countEnabled()
         {
             int count = 0;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < 5; j++)
                 {
                     if (MassButton[i, j].IsEnabled == true)
                     {
@@ -182,9 +183,9 @@ namespace Miner
             Help();
             if (countEnabled() > 10)
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 5; i++)
                 {
-                    for (int j = 0; j < 10; j++)
+                    for (int j = 0; j < 5; j++)
                     {
                         if ((sender as Button) == MassButton[i, j])
                         {
@@ -199,9 +200,9 @@ namespace Miner
                             }
                             else
                             {
-                                for (int k = 0; k < 10; k++)
+                                for (int k = 0; k < 5; k++)
                                 {
-                                    for (int l = 0; l < 10; l++)
+                                    for (int l = 0; l < 5; l++)
                                     {
                                         if (Mass[k, l] == 10)
                                         {
@@ -236,6 +237,7 @@ namespace Miner
                 this.Close();
             }
         }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             int x = 0, y = 0;
@@ -244,7 +246,7 @@ namespace Miner
                 if (item is Button)
                 {
 
-                    if (x < 10)
+                    if (x < 5)
                     {
                         MassButton[x, y] = item as Button;
                         x++;
@@ -257,6 +259,10 @@ namespace Miner
                     }
                 }
             }
+   
+
         }
+
+
     }
 }

@@ -60,6 +60,9 @@
     <Compile Include="5x5game.xaml.cs">
       <DependentUpon>5x5game.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Thirt.xaml.cs">
+      <DependentUpon>Thirt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window2.xaml.cs">
       <DependentUpon>Window2.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="5x5game.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Thirt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
