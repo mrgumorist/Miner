@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Miner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="334.8" Width="400" ResizeMode="NoResize" Closing="Window_Closing" Loaded="Window_Loaded">
+        Title="Miner" Height="334.8" Width="400" ResizeMode="NoResize" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid  >
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="20" Margin="114,82,0,0" TextWrapping="Wrap" Text="Виберіть потрібний режим гри:" VerticalAlignment="Top" IsReadOnly="True" Width="159"/>
         <Button x:Name="button" Content="5*5(5 min)" HorizontalAlignment="Left" Height="117" Margin="18,121,0,0" VerticalAlignment="Top" Width="86" Click="button_Click"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Miner"
         mc:Ignorable="d"
-        Title="Window2" Height="450" Width="345.485" Loaded="Window_Loaded">
+        Title="SecondType" Height="450" Width="345.485" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
 
@@ -33,7 +33,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Grid.Row="0" Click="Button_Click"></Button>
             <Button Grid.Column="1" Grid.Row="0" Click="Button_Click"></Button>
-            <Button Grid.Column="2" Grid.Row="0" Click="Button_Click" HorizontalAlignment="Left" Width="68"></Button>
+            <Button Grid.Column="2" Grid.Row="0" Click="Button_Click" ></Button>
             <Button Grid.Column="3" Grid.Row="0" Click="Button_Click"></Button>
             <Button Grid.Column="4" Grid.Row="0" Click="Button_Click"></Button>
             <Button Grid.Column="0" Grid.Row="1" Click="Button_Click"></Button>
